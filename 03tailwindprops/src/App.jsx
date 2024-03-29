@@ -8,6 +8,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   let myObj = {
+    example: 'This is just for example',
     name: 'John',
     age: '21'
   }
