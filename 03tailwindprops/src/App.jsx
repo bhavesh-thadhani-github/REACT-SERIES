@@ -8,8 +8,6 @@ function App() {
   const [count, setCount] = useState(0)
 
   let myObj = {
-    another: 'This change has been done through another device',
-    example: 'This is just for example',
     name: 'John',
     age: '21'
   }
