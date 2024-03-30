@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import "./App.css";
 
 function App() {
@@ -9,25 +9,26 @@ function App() {
   const [password, setPassword] = useState("");
 
   // useRef hook
-  const passwordRef = useRef(null)
+  const passwordRef = useRef(null)  //L15
 
-  const passwordGenerator = useCallback(() => {
+  // the first thing we pass to useCallback hook is a function and then dependencies(inside the array)
+  const passwordGenerator = useCallback(() => {   //L1
     let pass = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    if (numberAllowed) str += "0123456789";
+    if (numberAllowed) str += "0123456789";   //L2
     if (charAllowed) str += '!@#$%^&*()-_=+[]{}~`"<>?/';
 
     for (let i = 1; i <= length; i++) {
-      let char = Math.floor(Math.random() * str.length + 1);
-      pass += str.charAt(char);
+      let char = Math.floor(Math.random() * str.length + 1);  //L3
+      pass += str.charAt(char);   //L4
     }
-    setPassword(pass);
-  }, [length, numberAllowed, charAllowed, setPassword]);
+    setPassword(pass);  //setPassword insert the value of pass in the password variable(above)
+  }, [length, numberAllowed, charAllowed, setPassword]);  //inside the arrays, these are dependencies 
 
   const copyPasswordToClipboard = useCallback(() => {
-    passwordRef.current?.select()
+    passwordRef.current?.select()   //L16
     // passwordRef.current?.setSelectionRange(0,3)
-    window.navigator.clipboard.writeText(password)
+    window.navigator.clipboard.writeText(password)  //L17
   }, [password])
 
   useEffect(() => {
@@ -41,10 +42,10 @@ function App() {
         <div className="flex shadow rounded-lg overflow-hidden mb-4">
           <input
             type="text"
-            value={password}
+            value={password}  //L5
             className="outline-none w-full py-1 px-3"
-            placeholder="password"
-            readOnly
+            placeholder="password"  //L6
+            readOnly  //L7
             ref={passwordRef}
           />
           <button className="outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0" onClick={copyPasswordToClipboard}>
@@ -55,12 +56,12 @@ function App() {
         <div className="flex text-sm gap-x-2">
           <div className="flex items-center gap-x-1">
             <input
-              type="range"
-              min={6}
+              type="range"  //L8
+              min={6}       //L9
               max={100}
               value={length}
               className="cursor-pointer"
-              onChange={(e) => {
+              onChange={(e) => {    //L10
                 setLength(e.target.value);
               }}
             />
@@ -69,14 +70,15 @@ function App() {
 
         <div className="flex items-center gap-x-1">
           <input
-            type="checkbox"
-            defaultChecked={numberAllowed}
+            type="checkbox"   //L11
+            defaultChecked={numberAllowed}  //L12
             id="numberInput"
-            onChange={() => {
-              setNumberAllowed((prev) => !prev);
+            onChange={() => {   //L13
+              setNumberAllowed((prev) => !prev);  //L14
             }}
           />
-          <label htmlFor="numberInput">Numbers</label>
+          {/* L15 (htmlFor) */}
+          <label htmlFor="numberInput">Numbers</label>  
 
           <div className="flex items-center gap-x-1">
             <input
