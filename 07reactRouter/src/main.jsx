@@ -23,7 +23,7 @@ import User from './components/User/User.jsx'
 //AP: 1)
 {/*This '/' in the path is a top level element in which the routing gets done. Nesting is getting inside it*/}
 // we are also adding more children like Home, About etc. We have to also import all these components(children)
-const router = createBrowserRouter([
+/*const router = createBrowserRouter([
   {   //this is a object in which we have the main path
     path: '/', 
     element: <Layout/>,
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
       }
     ]
   }
-])
+])*/
 
 //AP: 2)
 //another way for the above code(this syntax is more readable)
