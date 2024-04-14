@@ -45,7 +45,7 @@ import User from './components/User/User.jsx'
       }
     ]
   }
-])*/  
+])*/
 
 //AP: 2)
 //another way for the above code(this syntax is more readable)
